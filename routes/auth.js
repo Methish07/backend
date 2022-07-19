@@ -50,7 +50,7 @@ router.post('/signin',(req,res)=>{
                 else{
                     if((rows[0].u_password)===u_password){
                         const token=jwt.sign({_id:rows[0].id},JWT_SECRET);
-                        return res.json({token});
+                        return res.json({token,rows});
                     }
                     else{
                         return res.status(422).json({error:"invalid email or password"});
